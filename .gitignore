@@ -4,6 +4,9 @@ bin-release/
 [Oo]bj/
 [Bb]in/
 
+dotnetPeopleApi/bin 
+dotnetPeopleApi/obj 
+ 
 cors-server/.angular
 cors-server/node_modules
 
