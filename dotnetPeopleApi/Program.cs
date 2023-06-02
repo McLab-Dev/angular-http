@@ -1,13 +1,28 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<PeopleDb>(opt => opt.UseInMemoryDatabase("PeopleList"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+//default policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "MyPolicy",
+        policy =>
+        {
+            policy.WithOrigins("*")
+                .WithMethods("PUT", "DELETE", "GET");
+        });
+});
 var app = builder.Build();
 
+app.UseStaticFiles();
+//enable cors
+app.UseCors();
+
 app.MapGet("/peoples", async (PeopleDb db) =>
-    await db.Peoples.ToListAsync());
+    await db.Peoples.ToListAsync()).RequireCors("MyPolicy");
 
 app.MapGet("/peoples/registered", async (PeopleDb db) =>
     await db.Peoples.Where(t => t.IsRegistered).ToListAsync());

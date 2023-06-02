@@ -8,10 +8,19 @@ npm i cors
 ng serve --port 8000 -open 
 
 # api url
-http://localhost:5000/candy
-{
-    "candy": "bubble-gum"
-}
+curl -v http://localhost:5000/peoples
+[
+  {
+    "id": "1",
+    "name": "George Eliot",
+    "IsRegistered": true
+  },
+  {
+    "id": "2",
+    "name": "Bob Smith",
+    "IsRegistered": false
+  }
+]
 
 HEADERS
 -------

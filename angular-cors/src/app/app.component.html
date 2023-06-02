@@ -1,1 +1,21 @@
-<h1>Angular CORS App 😁</h1>
+<h1>Angular CORS Test App</h1>
+
+<table class="table" border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>IsRegistered</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let people of peoples">
+        <td>{{ people.id }}</td>
+        <td>{{ people.name }}</td>
+        <td>{{ people.IsRegistered }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+<hr/>
+<pre>{{ peoples | json }}</pre>
