@@ -1,0 +1,16 @@
+{
+  "people": [
+    {
+      "id": 1,
+      "name": "Hawk Stock"
+    },
+    {
+      "id": 2,
+      "name": "Bill Smith"
+    },
+    {
+      "name": "George Eliot",
+      "id": 3
+    }
+  ]
+}

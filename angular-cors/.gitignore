@@ -1,24 +1,4 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
-
-cors-server/.angular
-cors-server/node_modules
-
-angular-cors/.angular
-angular-cors/node_modules
-
-httpGet/.angular
-httpGet/node_modules
-
-httpClient/.angular
-httpClient/node_modules
-
-httpPost/.angular
-httpPost/node_modules
-httpPost/fakeServer/node_modules
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
 /dist
@@ -60,4 +40,3 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-
