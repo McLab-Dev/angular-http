@@ -1,6 +1,6 @@
 <h1>Angular CORS Test App</h1>
-
-<table class="table" border="1">
+<!-- 
+<table class="table" border="0">
     <thead>
       <tr>
         <th>ID</th>
@@ -16,6 +16,25 @@
       </tr>
     </tbody>
   </table>
-
+-->
 <hr/>
-<pre>{{ peoples | json }}</pre>
+<table class="table" border="0">
+  <thead>
+    <tr>
+      <th>date</th>
+      <th>temperatureC</th>
+      <th>temperatureF</th>
+      <th>summary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let weather of weathers">
+      <td>{{ weather.date }}</td>
+      <td>{{ weather.temperatureC }}</td>
+      <td>{{ weather.temperatureF }}</td>
+      <td>{{ weather.summary }}</td>      
+    </tr>
+  </tbody>
+</table>
+
+<pre>{{ weathers | json }}</pre> 

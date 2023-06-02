@@ -9,6 +9,14 @@ export class Peoples {
   IsRegistered!: string;
 }
 
+export class Weather {
+  date!: string;
+  temperatureC!: string;
+  temperatureF!: string;
+  summary!: string;  
+}
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,9 +24,10 @@ export class Peoples {
 })
 export class AppComponent {
   title = 'angular-cors';
-  baseURL: string = 'http://localhost:5091/peoples';
-  //baseURL: string = 'http://192.168.0.31:5000/peoples';  
+  peopleURL: string = 'http://192.168.0.31:5000/peoples';
+  weatherURL: string = 'http://192.168.0.31:5051/WeatherForecast';  
   peoples!: Peoples[];
+  weathers!: Weather[];
 
   constructor(private http: HttpClient) {}
 
@@ -26,17 +35,23 @@ export class AppComponent {
     this.getPeopleWithoutHeader().subscribe((people) => {
       this.peoples = people;
     });
-    //this.getPeoplesWithErrorHandler()
+    this.getWeatherWithoutHeader().subscribe((weather) => {
+      this.weathers = weather;
+    });
   }
 
   getPeoples() {
-    this.http.get(this.baseURL).subscribe((data) => {
+    this.http.get(this.peopleURL).subscribe((data) => {
       console.log(data);
     });
   }
 
   getPeopleWithoutHeader(): Observable<Peoples[]> {
-    return this.http.get<Peoples[]>(this.baseURL);
+    return this.http.get<Peoples[]>(this.peopleURL);
+  }
+
+  getWeatherWithoutHeader(): Observable<Weather[]> {
+    return this.http.get<Weather[]>(this.weatherURL);
   }
 
   getPeopleWithHeader(): Observable<Peoples[]> {
@@ -44,7 +59,7 @@ export class AppComponent {
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
     console.log(headers);
-    return this.http.get<Peoples[]>(this.baseURL, {
+    return this.http.get<Peoples[]>(this.peopleURL, {
       headers: headers,
     });
   }
@@ -54,9 +69,9 @@ export class AppComponent {
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
     console.log(headers);
-    console.log(this.baseURL);
+    console.log(this.peopleURL);
     return this.http
-      .get<Peoples[]>(this.baseURL, {
+      .get<Peoples[]>(this.peopleURL, {
         headers: headers,
       })
       .subscribe(
